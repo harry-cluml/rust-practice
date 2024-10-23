@@ -28,11 +28,11 @@ fn solution(num1: i32, num2: i32) -> i32 {
 }
 
 #[test]
-fn add_two_integers_example_1() {
+fn problem_2235_add_two_integers_example_1() {
     assert_eq!(solution(12, 5), 17);
 }
 
 #[test]
-fn add_two_integers_example_2() {
+fn problem_2235_add_two_integers_example_2() {
     assert_eq!(solution(-10, 4), -6);
 }
