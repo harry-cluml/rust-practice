@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+#[allow(dead_code)]
 fn solve(nums: &[i32]) -> i32 {
     let mut count_map = HashMap::<i32, i32>::new();
     let mut acc = 0;

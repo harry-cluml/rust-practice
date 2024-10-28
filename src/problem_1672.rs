@@ -1,4 +1,5 @@
-fn solve(accounts: &Vec<Vec<i32>>) -> Result<i32, String> {
+#[allow(dead_code)]
+fn solve(accounts: &[Vec<i32>]) -> Result<i32, String> {
     accounts
         .iter()
         .map(|v| v.iter().sum())
