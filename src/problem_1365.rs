@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 fn solve(nums: &[i32]) -> Vec<usize> {
     nums.iter()
         .map(|&x| nums.iter().filter(|&&y| x > y).count())
