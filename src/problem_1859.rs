@@ -1,6 +1,7 @@
+#[allow(dead_code)]
 fn solve(s: &str) -> String {
     let mut splited: Vec<&str> = s.split(' ').collect();
-    debug_assert!(splited.iter().all(|x| x.len() > 0));
+    debug_assert!(splited.iter().all(|x| !x.is_empty()));
     splited.sort_unstable_by_key(|x| x.chars().last());
     splited
         .iter()
