@@ -1,8 +1,9 @@
+#[allow(dead_code)]
 fn solve(candies: &[i32], extra_candies: i32) -> Result<Vec<bool>, String> {
     let max = candies
         .iter()
         .max()
-        .ok_or_else(|| format!("Max value must exist in candies"))?;
+        .ok_or_else(|| "Max value must exist in candies".to_string())?;
     let output = candies
         .iter()
         .map(|&e| e + extra_candies >= *max)

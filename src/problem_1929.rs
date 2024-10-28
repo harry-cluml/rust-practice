@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 fn solve(nums: &[i32]) -> Vec<i32> {
     [nums, nums].concat()
 }

@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 fn solve(num: i32) -> i32 {
     let n0 = num / 1000;
     let n1 = (num % 1000) / 100;

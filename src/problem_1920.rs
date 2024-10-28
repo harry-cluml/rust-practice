@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 fn solve(nums: &[usize]) -> Result<Vec<usize>, String> {
     let outs = nums
         .iter()

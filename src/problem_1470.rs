@@ -1,7 +1,8 @@
+#[allow(dead_code)]
 fn solve(nums: &[i32], n: i32) -> Result<Vec<i32>, String> {
     let n: usize = n
         .try_into()
-        .or_else(|e| Err(format!("n must be cast to usize. n: {} error: {}", n, e)))?;
+        .map_err(|e| format!("n must be cast to usize. n: {n} error: {e}"))?;
     if n >= nums.len() {
         return Err(format!(
             "n must be less than nums length. nums length: {} n: {}",
