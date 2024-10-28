@@ -4,7 +4,7 @@ fn solve(sentences: &[&str]) -> Result<usize, String> {
         .iter()
         .map(|&x| x.split(' ').count())
         .max()
-        .ok_or_else(|| format!("Must exist max value"))
+        .ok_or_else(|| "Must exist max value".to_string())
 }
 
 #[cfg(test)]
