@@ -18,6 +18,7 @@ mod problem_1859;
 mod problem_1920;
 mod problem_1929;
 mod problem_2011;
+mod problem_2037;
 mod problem_2114;
 mod problem_2160;
 mod problem_2235;
