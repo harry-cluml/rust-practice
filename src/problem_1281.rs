@@ -1,29 +1,20 @@
 use std::iter::successors;
 
 #[allow(dead_code)]
-fn solve(n: i32) -> Result<i32, String> {
+fn solve(n: i32) -> i32 {
     let (prod, sum) = successors(Some(n), |&x| if x > 0 { Some(x / 10) } else { None })
         .filter_map(|x| if x > 0 { Some(x % 10) } else { None })
-        .fold((Ok(1), Ok(0)), |(prod, sum), x| {
-            (
-                prod.and_then(|p: i32| {
-                    p.checked_mul(x)
-                        .ok_or_else(|| format!("Overflow occurred. prod: {p} x: {x}"))
-                }),
-                sum.and_then(|s: i32| {
-                    s.checked_add(x)
-                        .ok_or_else(|| format!("Overflow occurred. sum: {s} x: {x}"))
-                }),
-            )
-        });
-    match (prod, sum) {
-        (Ok(p), Ok(s)) => p
-            .checked_sub(s)
-            .ok_or_else(|| format!("Overflow occurred. prod: {p} sum: {s}")),
-        (Ok(_), Err(s)) => Err(s),
-        (Err(p), Ok(_)) => Err(p),
-        (Err(p), Err(s)) => Err(format!("{p}\n{s}")),
-    }
+        .fold(
+            (Ok::<i32, String>(1), Ok::<i32, String>(0)),
+            |(prod, sum), x| {
+                let p = prod.expect("n always 1 <= n <= 10^5, prod will not overflow");
+                let s = sum.expect("n always 1 <= n <= 10^5, sum will not overflow");
+                (Ok(p * x), Ok(s + x))
+            },
+        );
+    let p = prod.expect("n always 1 <= n <= 10^5, prod will not overflow");
+    let s = sum.expect("n always 1 <= n <= 10^5, sum will not overflow");
+    p - s
 }
 
 #[cfg(test)]
@@ -35,7 +26,7 @@ mod tests {
         let n = 234;
         let expected_output = 15;
         let output = solve(n);
-        assert_eq!(output.expect("Unexpected error occurred"), expected_output);
+        assert_eq!(output, expected_output);
     }
 
     #[test]
@@ -43,6 +34,6 @@ mod tests {
         let n = 4421;
         let expected_output = 21;
         let output = solve(n);
-        assert_eq!(output.expect("Unexpected error occurred"), expected_output);
+        assert_eq!(output, expected_output);
     }
 }
